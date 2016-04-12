@@ -11,6 +11,7 @@ var RECIPIES = [
   {id: 4, name: 'Pliney the Elder Clone', style: 'Imperial IPA' },
   {id: 5, name: 'Janets Brown Ale', style: 'American Brown Ale' },
   {id: 6, name: 'Smoke on the water', style: 'Irish Stout' },
+  {id: 7, name: 'Grapefruit Honey Ale', style: 'Experimental' },
 ];
 
 ReactDOM.render(

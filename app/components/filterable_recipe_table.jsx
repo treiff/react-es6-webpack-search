@@ -3,6 +3,16 @@ import SearchBar from './search_bar.jsx';
 import RecipeTable from './recipe_table.jsx';
 
 class FilterableRecipeTable extends React.Component {
+  constructor(props) {
+    super(props)
+    filterText = '';
+  }
+
+  processInput(filterText) {
+    this.setState({
+      filterText: filterText
+    });
+  }
 
   render() {
     return(

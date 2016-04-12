@@ -1,7 +1,6 @@
 import React from 'react';
 
 class Timer extends React.Component {
-  // initial state in constructor
   constructor(props) {
     super(props);
     this.state = {secondsElapsed: 0};

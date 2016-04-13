@@ -4,8 +4,8 @@ import RecipeTable from './recipe_table.jsx';
 
 class FilterableRecipeTable extends React.Component {
   constructor(props) {
-    super(props)
-    filterText = '';
+    super(props);
+    this.state = {filterText: ''};
   }
 
   processInput(filterText) {
@@ -18,8 +18,8 @@ class FilterableRecipeTable extends React.Component {
     return(
       <div>
         <h1>some text</h1>
-        <SearchBar />
-        <RecipeTable recipes={this.props.recipes} />
+        <SearchBar filterText={this.props.filterText} onUserInput={this.processInput} />
+        <RecipeTable recipes={this.props.recipes} filterText={this.state.filterText} />
       </div>
     );
   }

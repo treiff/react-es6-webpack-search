@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Greeting from './components/greeting.jsx';
-import Timer from './components/timer.jsx';
 import FilterableRecipeTable from './components/filterable_recipe_table.jsx';
 
 var RECIPIES = [

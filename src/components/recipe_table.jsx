@@ -6,7 +6,11 @@ const RecipeTable = ({recipes, filterText}) => {
   let rows = [];
 
   recipes.map((recipe) => {
-    rows.push(<RecipeRow recipe={recipe} key={recipe.id}/>);
+    if (recipe.name.search(new RegExp(filterText, "i")) == -1) {
+      return;
+    } else {
+      rows.push(<RecipeRow recipe={recipe} key={recipe.id}/>);
+    }
   });
 
   return (

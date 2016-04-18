@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
         <input type="text"
          placeholder="Search Recipes..."
          value={this.props.filterText}
-         refs="filterTextInput"
+         ref="filterTextInput"
          onChange={this.processChange}
          />
       </form>

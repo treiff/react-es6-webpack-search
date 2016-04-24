@@ -1,29 +1,31 @@
 import React from 'react';
 import RecipeRow from './recipe_row.jsx';
 
-const RecipeTable = ({recipes, filterText}) => {
+class RecipeTable extends React.Component {
+  render() {
+    const rows = [];
+    const { recipes, filterText } = this.props;
 
-  let rows = [];
+    recipes.beers.map((recipe) => {
+      if (recipe.name.search(new RegExp(filterText, "i")) == -1) {
+        return;
+      } else {
+        rows.push(<RecipeRow recipe={recipe} key={recipe.id}/>);
+      }
+    });
 
-  recipes.map((recipe) => {
-    if (recipe.name.search(new RegExp(filterText, "i")) == -1) {
-      return;
-    } else {
-      rows.push(<RecipeRow recipe={recipe} key={recipe.id}/>);
-    }
-  });
-
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Style</th>
-        </tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
-  );
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Style</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+  }
 }
 
 export default RecipeTable;

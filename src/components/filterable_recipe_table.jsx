@@ -8,9 +8,12 @@ class FilterableRecipeTable extends React.Component {
     super();
 
     this.processInput = this.processInput.bind(this);
+    this.loadRecipesFromServer = this.loadRecipesFromServer.bind(this);
 
     this.state = {
-      filterText: ''
+      filterText: '',
+      recipes: { 'beers': [
+        {id: 1, name: 'Boston Lager Clone', style: 'Vienna Lager' }]}
     }
   }
 
@@ -20,19 +23,23 @@ class FilterableRecipeTable extends React.Component {
     });
   }
 
+  loadRecipesFromServer() {
+    let that = this;
+    fetch('http://127.0.0.1:3000/beers.json').then(function(response) {
+      return response.json();
+    }).then(function(recipes) {
+      that.setState({recipes: recipes});
+    })
+  }
+
+  componentDidMount() {
+    this.loadRecipesFromServer();
+    setInterval(this.loadRecipesFromServer, 5000);
+  }
+
   render() {
-
-    const recipes = [
-      {id: 1, name: 'Boston Lager Clone', style: 'Vienna Lager' },
-      {id: 2, name: 'Corona Clone', style: 'Light Lager' },
-      {id: 3, name: 'Hop Hammer', style: 'Imperial IPA' },
-      {id: 4, name: 'Pliney the Elder Clone', style: 'Imperial IPA' },
-      {id: 5, name: 'Janets Brown Ale', style: 'American Brown Ale' },
-      {id: 6, name: 'Smoke on the water', style: 'Irish Stout' },
-      {id: 7, name: 'Grapefruit Honey Ale', style: 'Experimental' },
-    ];
-
     return(
+
       <div>
         <h1>some text</h1>
         <SearchBar
@@ -40,10 +47,13 @@ class FilterableRecipeTable extends React.Component {
           onUserInput={this.processInput}
         />
         <RecipeTable
-          recipes={recipes}
+          //url={'http://127.0.0.1:3000/beers.json'}
+          //pollInterval={1000}
+          recipes={this.state.recipes}
           filterText={this.state.filterText}
         />
       </div>
+
     );
   }
 }

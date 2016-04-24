@@ -1,4 +1,5 @@
 import React from 'react';
+import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import RecipeRow from './recipe_row.jsx';
 
 class RecipeTable extends React.Component {
@@ -20,9 +21,13 @@ class RecipeTable extends React.Component {
           <tr>
             <th>Name</th>
             <th>Style</th>
+            <th>OG</th>
+            <th>FG</th>
           </tr>
         </thead>
-        <tbody>{rows}</tbody>
+        <TransitionGroup component="tbody" transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {rows}
+        </TransitionGroup>
       </table>
     );
   }

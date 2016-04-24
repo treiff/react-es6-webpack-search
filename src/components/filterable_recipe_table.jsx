@@ -1,3 +1,4 @@
+import '../style/main.css';
 import React from 'react';
 import SearchBar from './search_bar.jsx';
 import RecipeTable from './recipe_table.jsx';

@@ -13,8 +13,7 @@ class FilterableRecipeTable extends React.Component {
 
     this.state = {
       filterText: '',
-      recipes: { 'beers': [
-        {id: 1, name: 'Boston Lager Clone', style: 'Vienna Lager' }]}
+      recipes: { 'beers': [] }
     }
   }
 
@@ -42,7 +41,6 @@ class FilterableRecipeTable extends React.Component {
     return(
 
       <div>
-        <h1>some text</h1>
         <SearchBar
           filterText={this.state.filterText}
           onUserInput={this.processInput}
